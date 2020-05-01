@@ -12,14 +12,17 @@ import torch.backends.cudnn as cudnn
 from torch.utils.data import DataLoader
 import torch.optim as optim
 from tqdm import tqdm
-import datasets
-import models
-from core.config import config, update_config
-from core.engine import Engine
-from core.utils import AverageMeter
-from core import eval
-from core.utils import create_logger
-import models.loss as loss
+import lib.datasets as datasets
+from lib.core.config import update_config, config
+
+# import datasets
+# import models
+# from core.config import config, update_config
+# from core.engine import Engine
+# from core.utils import AverageMeter
+# from core import eval
+# from core.utils import create_logger
+# import models.loss as loss
 import math
 
 torch.manual_seed(0)
@@ -29,7 +32,8 @@ def parse_args():
     parser = argparse.ArgumentParser(description='Train localization network')
 
     # general
-    parser.add_argument('--cfg', help='experiment configure file name', required=True, type=str)
+    #parser.add_argument('--cfg', help='experiment configure file name', required=True, type=str)
+    parser.add_argument('--cfg', default="experiments/charades/2D-TAN-16x16-K5L8-pool.yaml")
     args, rest = parser.parse_known_args()
 
     # update config
